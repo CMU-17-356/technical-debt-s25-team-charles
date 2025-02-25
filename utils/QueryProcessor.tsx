@@ -11,5 +11,13 @@ export default function QueryProcessor(query: string): string {
     return "Team Charles";
   }
 
+  if (query.includes("largest")) {
+    const addMatch = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/);
+    if (addMatch) {
+      const numArray = [parseInt(addMatch[1]), parseInt(addMatch[2]), parseInt(addMatch[3])]
+      return Math.max(...numArray).toString();
+    }
+  }
+
   return "";
 }
