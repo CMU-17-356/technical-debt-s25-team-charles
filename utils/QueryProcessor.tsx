@@ -38,11 +38,11 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.includes("plus")) {
-    const addMatch = query.match(/What is (\d+) plus (\d+)/);
+    const addMatch = query.match(/What is ((?:\d+ plus )*\d+)/);
     if (addMatch) {
-      const x: number = parseInt(addMatch[1]);
-      const y: number = parseInt(addMatch[2]);
-      return (x+y).toString();
+      const numArray = addMatch[1].split(' plus ').map(Number);
+      const sum = numArray.reduce((acc, num) => acc + num, 0);
+      return (sum).toString();
     }
   }
 

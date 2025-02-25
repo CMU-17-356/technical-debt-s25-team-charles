@@ -33,4 +33,12 @@ describe("QueryProcessor", () => {
             "729, 64"
           ));
     })
+
+    test('should return name', () => {
+        const query = "What is 1 plus 2 plus 3?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "6"
+          ));
+    })
 });
