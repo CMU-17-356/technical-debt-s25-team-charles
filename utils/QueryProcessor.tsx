@@ -100,5 +100,14 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.includes("power")) {
+    const addMatch = query.match(/What is (\d+) to the power of (\d+)?/)
+    if (addMatch) {
+      const numArray = [parseInt(addMatch[1]), parseInt(addMatch[2])]
+      const result = Math.pow(numArray[0], numArray[1]);
+      return result.toString();
+    }
+  }
+
   return "";
 }
