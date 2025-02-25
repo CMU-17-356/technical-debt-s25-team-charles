@@ -22,7 +22,15 @@ describe("QueryProcessor", () => {
         const query = "What is your name?";
         const response: string = QueryProcessor(query);
         expect(response).toBe((
-            "Rohan"
+            "Team Charles"
+          ));
+    })
+
+    test('should return name', () => {
+        const query = "Which of the following numbers is both a square and a cube: 729, 1796, 4624, 2617, 3633, 1659, 64?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "729, 64"
           ));
     })
 });
