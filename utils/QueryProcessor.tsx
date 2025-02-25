@@ -64,7 +64,7 @@ export default function QueryProcessor(query: string): string {
       return squareAndCube.join(", ");
     }
   }
-  
+
   if (query.includes("Which of the following is the largest: ")) {
     const maxMatch = query.match(/Which of the following is the largest: (\d+), (\d+), (\d+)/);
     if (maxMatch) {
@@ -72,6 +72,22 @@ export default function QueryProcessor(query: string): string {
       const y: number = parseInt(maxMatch[2]);
       const z: number = parseInt(maxMatch[3]);
       return Math.max(x, y, z).toString();
+    }
+  }
+
+  if (query.includes("primes")) {
+    const addMatch = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)/)
+    if (addMatch) {
+      const numArray = [parseInt(addMatch[1]), parseInt(addMatch[2]), parseInt(addMatch[3]), parseInt(addMatch[4]), parseInt(addMatch[5])]
+      const primes = numArray.filter(num => {
+        for (let i = 2; i < num; i++) {
+          if (num % i === 0) {
+            return false;
+          }
+        }
+        return num > 1;
+      })
+      return primes.join(", ");
     }
   }
 
