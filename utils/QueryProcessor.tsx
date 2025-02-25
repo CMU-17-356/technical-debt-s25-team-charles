@@ -46,6 +46,15 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.includes("minus")) {
+    const addMatch = query.match(/What is ((?:\d+ minus )*\d+)/);
+    if (addMatch) {
+      const numArray = addMatch[1].split(' plus ').map(Number);
+      const sum = numArray[0] - numArray.slice(1).reduce((acc, num) => acc + num, 0);
+      return (sum).toString();
+    }
+  }
+
   if (query.includes("multiplied")) {
     const addMatch = query.match(/What is (\d+) multiplied by (\d+)/);
     if (addMatch) {
