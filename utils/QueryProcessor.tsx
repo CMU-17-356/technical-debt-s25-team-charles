@@ -64,6 +64,16 @@ export default function QueryProcessor(query: string): string {
       return squareAndCube.join(", ");
     }
   }
+  
+  if (query.includes("Which of the following is the largest: ")) {
+    const maxMatch = query.match(/Which of the following is the largest: (\d+), (\d+), (\d+)/);
+    if (maxMatch) {
+      const x: number = parseInt(maxMatch[1]);
+      const y: number = parseInt(maxMatch[2]);
+      const z: number = parseInt(maxMatch[3]);
+      return Math.max(x, y, z).toString();
+    }
+  }
 
   return "";
 }
