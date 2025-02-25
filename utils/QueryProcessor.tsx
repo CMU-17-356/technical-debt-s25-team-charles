@@ -66,15 +66,5 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
-  if (query.includes("Which+of+the+following+numbers is both a square and a cube: ")) {
-    const maxMatch = query.match(/Which of the following is the largest: (\d+), (\d+), (\d+)/);
-    if (maxMatch) {
-      const x: number = parseInt(maxMatch[1]);
-      const y: number = parseInt(maxMatch[2]);
-      const z: number = parseInt(maxMatch[1]);
-      return Math.max(x, y, z).toString();
-    }
-  }
-
   return "";
 }
